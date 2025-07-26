@@ -124,7 +124,7 @@ Choose your adventure based on your background and goals:
 
 Explore complete, working examples you can clone and customize:
 
-### 🟰 Beginner Examples
+### 🔰 Beginner Examples
 - [**Customer Support Agent**](examples/customer-support/) - RAG-powered support with knowledge base
 - [**Code Assistant**](examples/code-assistant/) - Interactive coding helper with sandboxed execution
 - [**Daily Standup Bot**](examples/standup-bot/) - Automated team updates via Slack
