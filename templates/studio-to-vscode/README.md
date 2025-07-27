@@ -1,1 +1,420 @@
-# 🔄 Studio-to-VS Code Development Template\n\n> **Seamless transition from Agent Studio to professional development** - Start with natural language, continue with code\n\n## 🎯 What This Template Provides\n\nThis template enables a smooth workflow from Toolhouse Agent Studio (no-code) to VS Code (professional development), following industry best practices:\n\n- **🎨 Start in Agent Studio**: Build and test your agent with natural language\n- **📁 Export to structured project**: Get a complete, ready-to-code project structure\n- **🔧 Continue in VS Code**: Professional development with CLI, Git, and deployment\n- **🐍 Python integration**: Optional UV-powered Python setup for advanced agents\n- **🚀 Deploy with confidence**: Production-ready setup from day one\n\n## 🚀 Quick Start Workflow\n\n### Phase 1: Agent Studio (5-10 minutes)\n\n1. **Create in Agent Studio**\n   ```\n   Open: https://toolhouse.ai/studio\n   \n   Prompt: \"Build a [YOUR_AGENT_TYPE] agent that [DESCRIPTION].\n   \n   The agent should:\n   - [Feature 1]\n   - [Feature 2] \n   - [Feature 3]\n   \n   Test it with: [TEST_QUESTION]\"\n   ```\n\n2. **Test and Refine**\n   - Run the agent with test questions\n   - Refine the prompt until satisfied\n   - Note the generated YAML configuration\n\n3. **Export Configuration**\n   - Copy the generated `.th` file content\n   - Note any custom variables or settings\n\n### Phase 2: VS Code Setup (2-3 minutes)\n\n1. **Clone this template**\n   ```bash\n   git clone https://github.com/Magnussmari/ultimate-toolhouse-guide.git\n   cd ultimate-toolhouse-guide/templates/studio-to-vscode\n   ```\n\n2. **Run the setup script**\n   ```bash\n   # Basic agent setup\n   ./setup.sh \"your-agent-name\"\n   \n   # With Python integration (recommended for data/research agents)\n   ./setup.sh \"your-agent-name\" --python\n   ```\n\n3. **Open in VS Code**\n   ```bash\n   cd your-agent-name-agent\n   code .\n   ```\n\n### Phase 3: Professional Development (Ongoing)\n\n1. **Replace template agent with your Agent Studio export**\n2. **Use built-in development workflow**\n3. **Deploy and iterate**\n\n## 📁 Project Structure\n\n### Basic Agent Structure\n```\nyour-agent-project/\n├── 📄 README.md                 # Project documentation\n├── ⚙️ agent.yaml               # Your Toolhouse agent configuration\n├── 🔧 .env.example             # Environment variables template\n├── 📋 .vscode/\n│   ├── settings.json           # VS Code project settings\n│   ├── tasks.json              # Toolhouse CLI tasks\n│   ├── launch.json             # Debugging configuration\n│   └── extensions.json         # Recommended extensions\n├── 🔄 scripts/\n│   ├── dev.sh                  # Development workflow\n│   ├── test.sh                 # Testing script\n│   └── deploy.sh               # Deployment script\n├── 🧪 tests/\n│   ├── test-scenarios.yaml     # Test cases for your agent\n│   └── run-tests.sh            # Test runner\n└── 🔒 .gitignore               # Git ignore rules\n```\n\n### With Python Integration (--python flag)\n```\nyour-agent-project/\n├── 📄 README.md\n├── ⚙️ agent.yaml               # Toolhouse agent config\n├── 🐍 pyproject.toml           # UV Python project config\n├── 🔒 uv.lock                  # Dependency lock file\n├── 📁 src/\n│   └── your_agent/\n│       ├── __init__.py\n│       └── main.py             # Custom Python logic\n├── 🧪 tests/\n│   ├── test_agent.py           # Python tests\n│   └── test-scenarios.yaml     # Agent integration tests\n├── 📋 .vscode/                 # Enhanced for Python\n└── 🔄 scripts/                 # UV-aware scripts\n```\n\n## 🐍 Python Integration with UV\n\n### Why UV?\nUV is the next-generation Python package manager (10-100x faster than pip):\n- **⚡ Blazing fast**: 10-100x faster than pip/poetry\n- **🔧 All-in-one**: Replaces pip, venv, poetry, pyenv in one tool\n- **🔒 Reliable**: Lock files ensure reproducible environments\n- **🌐 Modern**: Built in Rust, follows latest Python standards\n\n### When to Use Python Integration\n\nUse `--python` flag for agents that need:\n- **📊 Data processing**: CSV/JSON analysis, pandas operations\n- **🔬 Research tasks**: Web scraping, API integrations\n- **🧮 Custom algorithms**: Complex business logic, calculations\n- **🔌 Advanced integrations**: Database connections, file processing\n\n### Python Development Workflow\n\n```bash\n# Setup with Python\n./setup.sh \"data-analyzer\" --python\ncd data-analyzer-agent\n\n# Install Python dependencies\nuv add pandas requests matplotlib\n\n# Add development dependencies\nuv add --dev pytest black ruff mypy\n\n# Run your Python code\nuv run python src/data_analyzer/main.py\n\n# Test everything (Python + Agent)\n./scripts/test.sh\n\n# Deploy agent with Python integration\n./scripts/deploy.sh\n```\n\n## 🛠️ VS Code Integration Features\n\n### Built-in Tasks (Ctrl+Shift+P → \"Tasks\")\n\n| Task | Shortcut | Description |\n|------|----------|-------------|\n| **Test Agent** | `Ctrl+Shift+T` | Run your agent locally with test scenarios |\n| **Deploy Agent** | `Ctrl+Shift+D` | Deploy to Toolhouse cloud |\n| **Python: Install Deps** | - | Install Python dependencies with UV |\n| **Python: Run Tests** | - | Run Python tests with pytest |\n| **Python: Format Code** | - | Format Python code with Black |\n| **Watch Mode** | `Ctrl+Shift+W` | Auto-reload on file changes |\n| **View Logs** | `Ctrl+Shift+L` | Stream agent execution logs |\n\n### Recommended Extensions (Auto-installed)\n\n#### For All Projects:\n- **YAML Support**: Syntax highlighting and validation for `.th` files\n- **Toolhouse CLI**: Integration with th commands\n- **GitLens**: Enhanced Git integration\n- **Error Lens**: Inline error highlighting\n- **REST Client**: Test your deployed agent API\n\n#### For Python Projects:\n- **Python**: Official Python extension\n- **Pylance**: Fast Python language server\n- **Black Formatter**: Code formatting\n- **Ruff**: Fast Python linting\n- **Python Test Explorer**: Test discovery and running\n\n## 🔄 Development Workflows\n\n### Agent-Only Workflow\n```bash\n# 1. Edit agent.yaml in VS Code\n# 2. Test locally\n./scripts/test.sh\n\n# 3. Deploy when ready\n./scripts/deploy.sh\n```\n\n### Python + Agent Workflow\n```bash\n# 1. Develop Python logic\nvim src/your_agent/main.py\n\n# 2. Test Python code\nuv run pytest\n\n# 3. Test agent integration\n./scripts/test.sh\n\n# 4. Format and lint\nuv run black src/\nuv run ruff check src/\n\n# 5. Deploy everything\n./scripts/deploy.sh\n```\n\n### Development Mode (Auto-reload)\n```bash\n# Watch for changes and auto-test\n./scripts/dev.sh\n\n# In another terminal, make changes to:\n# - agent.yaml (agent config)\n# - src/ (Python code)\n# - tests/ (test scenarios)\n```\n\n## 📋 Pre-configured Templates\n\n### Available Agent Templates\n\n| Template | Use Case | Python? | Agent Studio Prompt |\n|----------|----------|---------|----------------------|\n| **customer-support** | Help desk automation | Optional | \"Build a customer support agent with knowledge base search...\" |\n| **data-analyst** | CSV/JSON analysis | ✅ Recommended | \"Build a data analysis agent that can process uploaded files...\" |\n| **research-assistant** | Web research | ✅ Recommended | \"Build a research agent that can search and summarize topics...\" |\n| **code-reviewer** | Code review automation | Optional | \"Build a code review agent that analyzes pull requests...\" |\n| **content-writer** | Content generation | Optional | \"Build a content writing agent for blog posts and marketing...\" |\n\n### Using Templates\n\n```bash\n# Use specific template\n./setup.sh \"my-agent\" --template customer-support\n\n# Use template with Python\n./setup.sh \"my-agent\" --template data-analyst --python\n\n# List available templates\n./setup.sh --list-templates\n```\n\n## 🐍 UV Package Manager Guide\n\n### Essential UV Commands\n\n```bash\n# Project management\nuv init my-project              # Create new Python project\nuv add requests pandas          # Add dependencies\nuv add --dev pytest black       # Add dev dependencies\nuv remove old-package           # Remove dependencies\n\n# Environment management\nuv venv                          # Create virtual environment\nuv sync                          # Install all dependencies\nuv run python script.py         # Run Python in project env\nuv run pytest                   # Run commands in project env\n\n# Python version management\nuv python install 3.12          # Install Python 3.12\nuv python pin 3.11              # Pin project to Python 3.11\nuv python list                   # List installed Python versions\n\n# Lock file management\nuv lock                          # Update uv.lock file\nuv export --format requirements.txt > requirements.txt\n```\n\n### Dependency Groups\n\n```toml\n# pyproject.toml\n[project]\ndependencies = [\n    \"requests\",  # Production dependencies\n]\n\n[project.optional-dependencies]\ndev = [\"pytest\", \"black\", \"ruff\"]    # Development tools\ndata = [\"pandas\", \"numpy\", \"matplotlib\"]  # Data science\nweb = [\"fastapi\", \"uvicorn\", \"httpx\"]      # Web development\nai = [\"openai\", \"anthropic\", \"langchain\"]  # AI/ML tools\n```\n\n```bash\n# Install specific groups\nuv sync --extra dev              # Install dev dependencies\nuv sync --extra data             # Install data science tools\nuv sync --extra dev --extra ai   # Install multiple groups\n```\n\n### Migration from pip/poetry\n\n```bash\n# From requirements.txt\nuv add -r requirements.txt\n\n# From poetry (copy dependencies from pyproject.toml)\n# UV uses the same pyproject.toml format!\n\n# From conda environment.yml\n# Extract package names and add with uv add\n```\n\n## 🔧 Advanced Configuration\n\n### Custom Python Setup\n\n```toml\n# pyproject.toml\n[tool.uv]\ndev-dependencies = [\n    \"pytest>=7.0.0\",\n    \"black>=23.0.0\",\n    \"ruff>=0.1.0\",\n]\n\n[tool.black]\nline-length = 88\ntarget-version = ['py39']\n\n[tool.ruff]\nselect = [\"E\", \"F\", \"I\", \"N\", \"W\"]\nline-length = 88\n\n[tool.pytest.ini_options]\npythonpath = [\"src\"]\ntestpaths = [\"tests\"]\n```\n\n### VS Code Python Settings\n\n```json\n// .vscode/settings.json\n{\n  \"python.defaultInterpreterPath\": \"./.venv/bin/python\",\n  \"python.testing.pytestEnabled\": true,\n  \"python.testing.pytestArgs\": [\"tests\"],\n  \"python.formatting.provider\": \"black\",\n  \"python.linting.ruffEnabled\": true,\n  \"python.linting.enabled\": true\n}\n```\n\n## 🚨 Troubleshooting\n\n### Common UV Issues\n\n```bash\n# UV not found after installation\nsource ~/.bashrc  # or restart terminal\nexport PATH=\"$HOME/.cargo/bin:$PATH\"\n\n# Permission denied (macOS/Linux)\nsudo chown -R $USER ~/.local/share/uv\n\n# Python version not found\nuv python install 3.12  # Install specific version\nuv python list           # Check available versions\n\n# Dependencies not installing\nuv sync --reinstall      # Force reinstall\nuv cache clean           # Clear UV cache\n```\n\n### VS Code Python Issues\n\n```bash\n# Python interpreter not detected\n# Ctrl+Shift+P → \"Python: Select Interpreter\"\n# Choose: ./venv/bin/python\n\n# Tests not running\n# Ctrl+Shift+P → \"Python: Configure Tests\"\n# Select: pytest, tests/ directory\n\n# Imports not working\n# Check python.pythonPath in VS Code settings\n# Ensure src/ is in PYTHONPATH\n```\n\n## 🎓 Learning Path\n\n### For Beginners\n1. Start with basic setup (no Python): `./setup.sh \"my-agent\"`\n2. Learn agent.yaml configuration\n3. Add Python when needed: `./setup.sh \"my-agent\" --python`\n4. Gradually explore UV commands\n\n### For Python Developers\n1. Use Python setup: `./setup.sh \"my-agent\" --python`\n2. Migrate from pip/poetry to UV\n3. Integrate existing Python code\n4. Set up CI/CD with UV\n\n### For Teams\n1. Standardize on UV for all Python projects\n2. Use dependency groups for different roles\n3. Commit uv.lock files for reproducibility\n4. Set up shared development workflows\n\n## 🔗 Related Resources\n\n- [Agent Studio Guide](../../docs/03-agent-studio.md)\n- [CLI Developer Guide](../../docs/04-developer-workflow.md)\n- [VS Code Copilot with MCP](https://code.visualstudio.com/docs/copilot/overview)\n- [UV Official Documentation](https://docs.astral.sh/uv/)\n- [Python Project Standards (PEP 621)](https://peps.python.org/pep-0621/)\n- [Toolhouse Best Practices](../../docs/reference/best-practices.md)\n\n---\n\n**🎯 This template bridges the gap between no-code Agent Studio and professional development, with optional Python integration powered by UV - the fastest Python package manager!**"
+# 🔄 Studio-to-VS Code Development Template
+
+> **Seamless transition from Agent Studio to professional development** - Start with natural language, continue with code
+
+## 🎯 What This Template Provides
+
+This template enables a smooth workflow from Toolhouse Agent Studio (no-code) to VS Code (professional development), following industry best practices:
+
+- **🎨 Start in Agent Studio**: Build and test your agent with natural language
+- **📁 Export to structured project**: Get a complete, ready-to-code project structure
+- **🔧 Continue in VS Code**: Professional development with CLI, Git, and deployment
+- **🐍 Python integration**: Optional UV-powered Python setup for advanced agents
+- **🚀 Deploy with confidence**: Production-ready setup from day one
+
+## 🚀 Quick Start Workflow
+
+### Phase 1: Agent Studio (5-10 minutes)
+
+1. **Create in Agent Studio**
+   ```
+   Open: https://toolhouse.ai/studio
+   
+   Prompt: "Build a [YOUR_AGENT_TYPE] agent that [DESCRIPTION].
+   
+   The agent should:
+   - [Feature 1]
+   - [Feature 2] 
+   - [Feature 3]
+   
+   Test it with: [TEST_QUESTION]"
+   ```
+
+2. **Test and Refine**
+   - Run the agent with test questions
+   - Refine the prompt until satisfied
+   - Note the generated YAML configuration
+
+3. **Export Configuration**
+   - Copy the generated `.th` file content
+   - Note any custom variables or settings
+
+### Phase 2: VS Code Setup (2-3 minutes)
+
+1. **Clone this template**
+   ```bash
+   git clone https://github.com/Magnussmari/ultimate-toolhouse-guide.git
+   cd ultimate-toolhouse-guide/templates/studio-to-vscode
+   ```
+
+2. **Run the setup script**
+   ```bash
+   # Basic agent setup
+   ./setup.sh "your-agent-name"
+   
+   # With Python integration (recommended for data/research agents)
+   ./setup.sh "your-agent-name" --python
+   ```
+
+3. **Open in VS Code**
+   ```bash
+   cd your-agent-name-agent
+   code .
+   ```
+
+### Phase 3: Professional Development (Ongoing)
+
+1. **Replace template agent with your Agent Studio export**
+2. **Use built-in development workflow**
+3. **Deploy and iterate**
+
+## 📁 Project Structure
+
+### Basic Agent Structure
+```
+your-agent-project/
+├── 📄 README.md                 # Project documentation
+├── ⚙️ agent.yaml               # Your Toolhouse agent configuration
+├── 🔧 .env.example             # Environment variables template
+├── 📋 .vscode/
+│   ├── settings.json           # VS Code project settings
+│   ├── tasks.json              # Toolhouse CLI tasks
+│   ├── launch.json             # Debugging configuration
+│   └── extensions.json         # Recommended extensions
+├── 🔄 scripts/
+│   ├── dev.sh                  # Development workflow
+│   ├── test.sh                 # Testing script
+│   └── deploy.sh               # Deployment script
+├── 🧪 tests/
+│   ├── test-scenarios.yaml     # Test cases for your agent
+│   └── run-tests.sh            # Test runner
+└── 🔒 .gitignore               # Git ignore rules
+```
+
+### With Python Integration (--python flag)
+```
+your-agent-project/
+├── 📄 README.md
+├── ⚙️ agent.yaml               # Toolhouse agent config
+├── 🐍 pyproject.toml           # UV Python project config
+├── 🔒 uv.lock                  # Dependency lock file
+├── 📁 src/
+│   └── your_agent/
+│       ├── __init__.py
+│       └── main.py             # Custom Python logic
+├── 🧪 tests/
+│   ├── test_agent.py           # Python tests
+│   └── test-scenarios.yaml     # Agent integration tests
+├── 📋 .vscode/                 # Enhanced for Python
+└── 🔄 scripts/                 # UV-aware scripts
+```
+
+## 🐍 Python Integration with UV
+
+### Why UV?
+UV is the next-generation Python package manager (10-100x faster than pip):
+- **⚡ Blazing fast**: 10-100x faster than pip/poetry
+- **🔧 All-in-one**: Replaces pip, venv, poetry, pyenv in one tool
+- **🔒 Reliable**: Lock files ensure reproducible environments
+- **🌐 Modern**: Built in Rust, follows latest Python standards
+
+### When to Use Python Integration
+
+Use `--python` flag for agents that need:
+- **📊 Data processing**: CSV/JSON analysis, pandas operations
+- **🔬 Research tasks**: Web scraping, API integrations
+- **🧮 Custom algorithms**: Complex business logic, calculations
+- **🔌 Advanced integrations**: Database connections, file processing
+
+### Python Development Workflow
+
+```bash
+# Setup with Python
+./setup.sh "data-analyzer" --python
+cd data-analyzer-agent
+
+# Install Python dependencies
+uv add pandas requests matplotlib
+
+# Add development dependencies
+uv add --dev pytest black ruff mypy
+
+# Run your Python code
+uv run python src/data_analyzer/main.py
+
+# Test everything (Python + Agent)
+./scripts/test.sh
+
+# Deploy agent with Python integration
+./scripts/deploy.sh
+```
+
+## 🛠️ VS Code Integration Features
+
+### Built-in Tasks (Ctrl+Shift+P → "Tasks")
+
+| Task | Shortcut | Description |
+|------|----------|-------------|
+| **Test Agent** | `Ctrl+Shift+T` | Run your agent locally with test scenarios |
+| **Deploy Agent** | `Ctrl+Shift+D` | Deploy to Toolhouse cloud |
+| **Python: Install Deps** | - | Install Python dependencies with UV |
+| **Python: Run Tests** | - | Run Python tests with pytest |
+| **Python: Format Code** | - | Format Python code with Black |
+| **Watch Mode** | `Ctrl+Shift+W` | Auto-reload on file changes |
+| **View Logs** | `Ctrl+Shift+L` | Stream agent execution logs |
+
+### Recommended Extensions (Auto-installed)
+
+#### For All Projects:
+- **YAML Support**: Syntax highlighting and validation for `.th` files
+- **Toolhouse CLI**: Integration with th commands
+- **GitLens**: Enhanced Git integration
+- **Error Lens**: Inline error highlighting
+- **REST Client**: Test your deployed agent API
+
+#### For Python Projects:
+- **Python**: Official Python extension
+- **Pylance**: Fast Python language server
+- **Black Formatter**: Code formatting
+- **Ruff**: Fast Python linting
+- **Python Test Explorer**: Test discovery and running
+
+## 🔄 Development Workflows
+
+### Agent-Only Workflow
+```bash
+# 1. Edit agent.yaml in VS Code
+# 2. Test locally
+./scripts/test.sh
+
+# 3. Deploy when ready
+./scripts/deploy.sh
+```
+
+### Python + Agent Workflow
+```bash
+# 1. Develop Python logic
+vim src/your_agent/main.py
+
+# 2. Test Python code
+uv run pytest
+
+# 3. Test agent integration
+./scripts/test.sh
+
+# 4. Format and lint
+uv run black src/
+uv run ruff check src/
+
+# 5. Deploy everything
+./scripts/deploy.sh
+```
+
+### Development Mode (Auto-reload)
+```bash
+# Watch for changes and auto-test
+./scripts/dev.sh
+
+# In another terminal, make changes to:
+# - agent.yaml (agent config)
+# - src/ (Python code)
+# - tests/ (test scenarios)
+```
+
+## 📋 Pre-configured Templates
+
+### Available Agent Templates
+
+| Template | Use Case | Python? | Agent Studio Prompt |
+|----------|----------|---------|---------------------|
+| **customer-support** | Help desk automation | Optional | "Build a customer support agent with knowledge base search..." |
+| **data-analyst** | CSV/JSON analysis | ✅ Recommended | "Build a data analysis agent that can process uploaded files..." |
+| **research-assistant** | Web research | ✅ Recommended | "Build a research agent that can search and summarize topics..." |
+| **code-reviewer** | Code review automation | Optional | "Build a code review agent that analyzes pull requests..." |
+| **content-writer** | Content generation | Optional | "Build a content writing agent for blog posts and marketing..." |
+
+### Using Templates
+
+```bash
+# Use specific template
+./setup.sh "my-agent" --template customer-support
+
+# Use template with Python
+./setup.sh "my-agent" --template data-analyst --python
+
+# List available templates
+./setup.sh --list-templates
+```
+
+## 🐍 UV Package Manager Guide
+
+### Essential UV Commands
+
+```bash
+# Project management
+uv init my-project              # Create new Python project
+uv add requests pandas          # Add dependencies
+uv add --dev pytest black       # Add dev dependencies
+uv remove old-package           # Remove dependencies
+
+# Environment management
+uv venv                          # Create virtual environment
+uv sync                          # Install all dependencies
+uv run python script.py         # Run Python in project env
+uv run pytest                   # Run commands in project env
+
+# Python version management
+uv python install 3.12          # Install Python 3.12
+uv python pin 3.11              # Pin project to Python 3.11
+uv python list                   # List installed Python versions
+
+# Lock file management
+uv lock                          # Update uv.lock file
+uv export --format requirements.txt > requirements.txt
+```
+
+### Dependency Groups
+
+```toml
+# pyproject.toml
+[project]
+dependencies = [
+    "requests",  # Production dependencies
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "ruff"]    # Development tools
+data = ["pandas", "numpy", "matplotlib"]  # Data science
+web = ["fastapi", "uvicorn", "httpx"]      # Web development
+ai = ["openai", "anthropic", "langchain"]  # AI/ML tools
+```
+
+```bash
+# Install specific groups
+uv sync --extra dev              # Install dev dependencies
+uv sync --extra data             # Install data science tools
+uv sync --extra dev --extra ai   # Install multiple groups
+```
+
+### Migration from pip/poetry
+
+```bash
+# From requirements.txt
+uv add -r requirements.txt
+
+# From poetry (copy dependencies from pyproject.toml)
+# UV uses the same pyproject.toml format!
+
+# From conda environment.yml
+# Extract package names and add with uv add
+```
+
+## 🔧 Advanced Configuration
+
+### Custom Python Setup
+
+```toml
+# pyproject.toml
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.ruff]
+select = ["E", "F", "I", "N", "W"]
+line-length = 88
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+```
+
+### VS Code Python Settings
+
+```json
+// .vscode/settings.json
+{
+  "python.defaultInterpreterPath": "./.venv/bin/python",
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "python.formatting.provider": "black",
+  "python.linting.ruffEnabled": true,
+  "python.linting.enabled": true
+}
+```
+
+## 🚨 Troubleshooting
+
+### Common UV Issues
+
+```bash
+# UV not found after installation
+source ~/.bashrc  # or restart terminal
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Permission denied (macOS/Linux)
+sudo chown -R $USER ~/.local/share/uv
+
+# Python version not found
+uv python install 3.12  # Install specific version
+uv python list           # Check available versions
+
+# Dependencies not installing
+uv sync --reinstall      # Force reinstall
+uv cache clean           # Clear UV cache
+```
+
+### VS Code Python Issues
+
+```bash
+# Python interpreter not detected
+# Ctrl+Shift+P → "Python: Select Interpreter"
+# Choose: ./venv/bin/python
+
+# Tests not running
+# Ctrl+Shift+P → "Python: Configure Tests"
+# Select: pytest, tests/ directory
+
+# Imports not working
+# Check python.pythonPath in VS Code settings
+# Ensure src/ is in PYTHONPATH
+```
+
+## 🎓 Learning Path
+
+### For Beginners
+1. Start with basic setup (no Python): `./setup.sh "my-agent"`
+2. Learn agent.yaml configuration
+3. Add Python when needed: `./setup.sh "my-agent" --python`
+4. Gradually explore UV commands
+
+### For Python Developers
+1. Use Python setup: `./setup.sh "my-agent" --python`
+2. Migrate from pip/poetry to UV
+3. Integrate existing Python code
+4. Set up CI/CD with UV
+
+### For Teams
+1. Standardize on UV for all Python projects
+2. Use dependency groups for different roles
+3. Commit uv.lock files for reproducibility
+4. Set up shared development workflows
+
+## 🔗 Related Resources
+
+- [Agent Studio Guide](../../docs/03-agent-studio.md)
+- [CLI Developer Guide](../../docs/04-developer-workflow.md)
+- [VS Code Copilot with MCP](https://code.visualstudio.com/docs/copilot/overview)
+- [UV Official Documentation](https://docs.astral.sh/uv/)
+- [Python Project Standards (PEP 621)](https://peps.python.org/pep-0621/)
+- [Toolhouse Best Practices](../../docs/reference/best-practices.md)
+
+---
+
+**🎯 This template bridges the gap between no-code Agent Studio and professional development, with optional Python integration powered by UV - the fastest Python package manager!**
